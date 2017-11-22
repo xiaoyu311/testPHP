@@ -32,3 +32,35 @@ function createTable($rows, $cols) {
 } 
 
 echo createTable(3, 5);
+
+echo "<hr>";
+
+
+//加上&取到的是变量的引用，也就是地址，所以变量也跟着发生变化了
+function test($m) {
+	$m+=20;
+	var_dump($m);//25
+}
+$j=5;
+test($j);
+var_dump($j);//5
+echo "<hr>";
+function test1(&$m) {
+	$m+=20;
+	var_dump($m);//25
+}
+test1($j);
+var_dump($j);//25
+
+echo "<hr>";
+$fun="md5";
+echo $fun(1);//输出是一样的，自己定义的函数也是一样的
+echo "<hr>";
+echo md5(1);//输出是一样的
+echo "<hr>";
+
+
+
+get_defined_functions();//这个函数可以输出所有系统函数和我们自己定义的函数
+
+
